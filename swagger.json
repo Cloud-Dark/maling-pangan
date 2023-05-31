@@ -1,0 +1,117 @@
+ {
+     "openapi": "3.0.1",
+     "info": {
+         "title": "PanelHargaKomoditasPangan",
+         "version": "1"
+     },
+     "servers": [{
+         "url": "https://api-splp.layanan.go.id/t/acehprov.go.id/panel_harga_komoditas_pangan/1"
+     }],
+     "security": [{
+         "default": []
+     }],
+     "paths": {
+         "/api/hargaharianprovinsi/{level_harga_id}/1": {
+             "get": {
+                 "parameters": [{
+                     "name": "level_harga_id",
+                     "in": "path",
+                     "description": "Level_harga_id :\n1 = Harga tingkat produsen \n3 = Harga tingkat eceran",
+                     "required": true,
+                     "style": "simple",
+                     "explode": false,
+                     "schema": {
+                         "type": "string",
+                         "format": "string"
+                     }
+                 }],
+                 "responses": {
+                     "200": {
+                         "description": "ok"
+                     }
+                 },
+                 "security": [{
+                     "default": []
+                 }],
+                 "x-auth-type": "Application & Application User",
+                 "x-throttling-tier": "Unlimited"
+             }
+         },
+         "/api/hargahariankabkota/{level_harga_id}/{city_id}": {
+             "get": {
+                 "parameters": [{
+                     "name": "level_harga_id",
+                     "in": "path",
+                     "description": "Level_harga_id:\n1 = Harga tingkat produsen \n3 = Harga tingkat eceran",
+                     "required": true,
+                     "style": "simple",
+                     "explode": false,
+                     "schema": {
+                         "type": "string",
+                         "format": "string"
+                     }
+                 }, {
+                     "name": "city_id",
+                     "in": "path",
+                     "description": "City_id :\n4 = Kab. Aceh Tenggara\n5 = Kab. Aceh Timur\n6 = Kab. Aceh Tengah\n8 = Kab. Aceh Besar\n9 = Kab. Pidie\n10 = Kab. Bireuen\n11 = Kab. Aceh Utara\n13 = Kab. Gayo Lues\n14 = Kab. Aceh Tamiang\n15 = Kab. Nagan Raya\n17 = Kab. Bener Meriah\n18 = Kab. Pidie Jaya",
+                     "required": true,
+                     "style": "simple",
+                     "explode": false,
+                     "schema": {
+                         "type": "integer",
+                         "format": "string"
+                     }
+                 }],
+                 "responses": {
+                     "200": {
+                         "description": "ok"
+                     }
+                 },
+                 "security": [{
+                     "default": []
+                 }],
+                 "x-auth-type": "Application & Application User",
+                 "x-throttling-tier": "Unlimited"
+             }
+         },
+         "/api/komoditas-by-levelharga/{level_harga_id}": {
+             "get": {
+                 "parameters": [{
+                     "name": "level_harga_id",
+                     "in": "path",
+                     "description": "Level_harga_id :\n1 = Harga tingkat produsen \n3 = Harga tingkat eceran",
+                     "required": true,
+                     "style": "simple",
+                     "explode": false,
+                     "schema": {
+                         "type": "string",
+                         "format": "string"
+                     }
+                 }],
+                 "responses": {
+                     "200": {
+                         "description": "ok"
+                     }
+                 },
+                 "security": [{
+                     "default": []
+                 }],
+                 "x-auth-type": "Application & Application User",
+                 "x-throttling-tier": "Unlimited"
+             }
+         }
+     },
+     "components": {
+         "securitySchemes": {
+             "default": {
+                 "type": "oauth2",
+                 "flows": {
+                     "implicit": {
+                         "authorizationUrl": "https://api-splp.layanan.go.id/authorize",
+                         "scopes": {}
+                     }
+                 }
+             }
+         }
+     }
+ }
