@@ -1,1 +1,205 @@
-{"item":[{"id":"13e20efd-87b1-4736-aa88-fec0fed66903","name":"api","item":[{"id":"fcf358d9-0816-4497-8675-23724d3cf760","name":"/api/hargaharianprovinsi/:level_harga_id/1","request":{"name":"/api/hargaharianprovinsi/:level_harga_id/1","description":{},"url":{"path":["api","hargaharianprovinsi",":level_harga_id","1"],"host":["{{baseUrl}}"],"query":[],"variable":[{"description":"(Required) Level_harga_id :\n1 = Harga tingkat produsen \n3 = Harga tingkat eceran","type":"any","value":"<string>","key":"level_harga_id"}]},"method":"GET","auth":{"type":"oauth2"}},"response":[{"id":"b122dc99-8ae7-41ac-a492-518478558d2b","name":"ok","originalRequest":{"url":{"path":["api","hargaharianprovinsi",":level_harga_id","1"],"host":["{{baseUrl}}"],"query":[],"variable":[{"type":"any","key":"level_harga_id"}]},"header":[{"description":{"content":"Added as a part of security scheme: oauth2","type":"text/plain"},"key":"Authorization","value":"<token>"}],"method":"GET","body":{}},"status":"OK","code":200,"header":[{"key":"Content-Type","value":"text/plain"}],"body":"","cookie":[],"_postman_previewlanguage":"text"}],"event":[]},{"id":"ac016922-92a2-472b-a8a1-19c02962035c","name":"/api/hargahariankabkota/:level_harga_id/:city_id","request":{"name":"/api/hargahariankabkota/:level_harga_id/:city_id","description":{},"url":{"path":["api","hargahariankabkota",":level_harga_id",":city_id"],"host":["{{baseUrl}}"],"query":[],"variable":[{"description":"(Required) Level_harga_id:\n1 = Harga tingkat produsen \n3 = Harga tingkat eceran","type":"any","value":"<string>","key":"level_harga_id"},{"description":"(Required) City_id :\n4 = Kab. Aceh Tenggara\n5 = Kab. Aceh Timur\n6 = Kab. Aceh Tengah\n8 = Kab. Aceh Besar\n9 = Kab. Pidie\n10 = Kab. Bireuen\n11 = Kab. Aceh Utara\n13 = Kab. Gayo Lues\n14 = Kab. Aceh Tamiang\n15 = Kab. Nagan Raya\n17 = Kab. Bener Meriah\n18 = Kab. Pidie Jaya","type":"any","value":"<string>","key":"city_id"}]},"method":"GET","auth":{"type":"oauth2"}},"response":[{"id":"e75138d3-f058-4f65-97a3-38dccf1cad9b","name":"ok","originalRequest":{"url":{"path":["api","hargahariankabkota",":level_harga_id",":city_id"],"host":["{{baseUrl}}"],"query":[],"variable":[{"type":"any","key":"level_harga_id"},{"type":"any","key":"city_id"}]},"header":[{"description":{"content":"Added as a part of security scheme: oauth2","type":"text/plain"},"key":"Authorization","value":"<token>"}],"method":"GET","body":{}},"status":"OK","code":200,"header":[{"key":"Content-Type","value":"text/plain"}],"body":"","cookie":[],"_postman_previewlanguage":"text"}],"event":[]},{"id":"3ab953e8-4a24-4ebe-8cb4-dbfd0d866af6","name":"/api/komoditas-by-levelharga/:level_harga_id","request":{"name":"/api/komoditas-by-levelharga/:level_harga_id","description":{},"url":{"path":["api","komoditas-by-levelharga",":level_harga_id"],"host":["{{baseUrl}}"],"query":[],"variable":[{"description":"(Required) Level_harga_id :\n1 = Harga tingkat produsen \n3 = Harga tingkat eceran","type":"any","value":"<string>","key":"level_harga_id"}]},"method":"GET","auth":{"type":"oauth2"}},"response":[{"id":"1e294882-cd57-4c65-b0bb-6ceb5feaa07c","name":"ok","originalRequest":{"url":{"path":["api","komoditas-by-levelharga",":level_harga_id"],"host":["{{baseUrl}}"],"query":[],"variable":[{"type":"any","key":"level_harga_id"}]},"header":[{"description":{"content":"Added as a part of security scheme: oauth2","type":"text/plain"},"key":"Authorization","value":"<token>"}],"method":"GET","body":{}},"status":"OK","code":200,"header":[{"key":"Content-Type","value":"text/plain"}],"body":"","cookie":[],"_postman_previewlanguage":"text"}],"event":[]}],"event":[]}],"event":[],"variable":[{"id":"baseUrl","type":"string","value":"https://api-splp.layanan.go.id/t/acehprov.go.id/panel_harga_komoditas_pangan/1"}],"auth":{"type":"oauth2"},"info":{"_postman_id":"1213c94a-8a19-4328-90cb-1d1ca071a883","name":"PanelHargaKomoditasPangan","schema":"https://schema.getpostman.com/json/collection/v2.1.0/collection.json","description":{"content":"","type":"text/plain"}}}
+{
+    "item": [{
+        "id": "13e20efd-87b1-4736-aa88-fec0fed66903",
+        "name": "api",
+        "item": [{
+            "id": "fcf358d9-0816-4497-8675-23724d3cf760",
+            "name": "/api/hargaharianprovinsi/:level_harga_id/1",
+            "request": {
+                "name": "/api/hargaharianprovinsi/:level_harga_id/1",
+                "description": {},
+                "url": {
+                    "path": ["api", "hargaharianprovinsi", ":level_harga_id", "1"],
+                    "host": ["{{baseUrl}}"],
+                    "query": [],
+                    "variable": [{
+                        "description": "(Required) Level_harga_id :\n1 = Harga tingkat produsen \n3 = Harga tingkat eceran",
+                        "type": "any",
+                        "value": "<string>",
+                        "key": "level_harga_id"
+                    }]
+                },
+                "method": "GET",
+                "auth": {
+                    "type": "oauth2"
+                }
+            },
+            "response": [{
+                "id": "b122dc99-8ae7-41ac-a492-518478558d2b",
+                "name": "ok",
+                "originalRequest": {
+                    "url": {
+                        "path": ["api", "hargaharianprovinsi", ":level_harga_id", "1"],
+                        "host": ["{{baseUrl}}"],
+                        "query": [],
+                        "variable": [{
+                            "type": "any",
+                            "key": "level_harga_id"
+                        }]
+                    },
+                    "header": [{
+                        "description": {
+                            "content": "Added as a part of security scheme: oauth2",
+                            "type": "text/plain"
+                        },
+                        "key": "Authorization",
+                        "value": "<token>"
+                    }],
+                    "method": "GET",
+                    "body": {}
+                },
+                "status": "OK",
+                "code": 200,
+                "header": [{
+                    "key": "Content-Type",
+                    "value": "text/plain"
+                }],
+                "body": "",
+                "cookie": [],
+                "_postman_previewlanguage": "text"
+            }],
+            "event": []
+        }, {
+            "id": "ac016922-92a2-472b-a8a1-19c02962035c",
+            "name": "/api/hargahariankabkota/:level_harga_id/:city_id",
+            "request": {
+                "name": "/api/hargahariankabkota/:level_harga_id/:city_id",
+                "description": {},
+                "url": {
+                    "path": ["api", "hargahariankabkota", ":level_harga_id", ":city_id"],
+                    "host": ["{{baseUrl}}"],
+                    "query": [],
+                    "variable": [{
+                        "description": "(Required) Level_harga_id:\n1 = Harga tingkat produsen \n3 = Harga tingkat eceran",
+                        "type": "any",
+                        "value": "<string>",
+                        "key": "level_harga_id"
+                    }, {
+                        "description": "(Required) City_id :\n4 = Kab. Aceh Tenggara\n5 = Kab. Aceh Timur\n6 = Kab. Aceh Tengah\n8 = Kab. Aceh Besar\n9 = Kab. Pidie\n10 = Kab. Bireuen\n11 = Kab. Aceh Utara\n13 = Kab. Gayo Lues\n14 = Kab. Aceh Tamiang\n15 = Kab. Nagan Raya\n17 = Kab. Bener Meriah\n18 = Kab. Pidie Jaya",
+                        "type": "any",
+                        "value": "<string>",
+                        "key": "city_id"
+                    }]
+                },
+                "method": "GET",
+                "auth": {
+                    "type": "oauth2"
+                }
+            },
+            "response": [{
+                "id": "e75138d3-f058-4f65-97a3-38dccf1cad9b",
+                "name": "ok",
+                "originalRequest": {
+                    "url": {
+                        "path": ["api", "hargahariankabkota", ":level_harga_id", ":city_id"],
+                        "host": ["{{baseUrl}}"],
+                        "query": [],
+                        "variable": [{
+                            "type": "any",
+                            "key": "level_harga_id"
+                        }, {
+                            "type": "any",
+                            "key": "city_id"
+                        }]
+                    },
+                    "header": [{
+                        "description": {
+                            "content": "Added as a part of security scheme: oauth2",
+                            "type": "text/plain"
+                        },
+                        "key": "Authorization",
+                        "value": "<token>"
+                    }],
+                    "method": "GET",
+                    "body": {}
+                },
+                "status": "OK",
+                "code": 200,
+                "header": [{
+                    "key": "Content-Type",
+                    "value": "text/plain"
+                }],
+                "body": "",
+                "cookie": [],
+                "_postman_previewlanguage": "text"
+            }],
+            "event": []
+        }, {
+            "id": "3ab953e8-4a24-4ebe-8cb4-dbfd0d866af6",
+            "name": "/api/komoditas-by-levelharga/:level_harga_id",
+            "request": {
+                "name": "/api/komoditas-by-levelharga/:level_harga_id",
+                "description": {},
+                "url": {
+                    "path": ["api", "komoditas-by-levelharga", ":level_harga_id"],
+                    "host": ["{{baseUrl}}"],
+                    "query": [],
+                    "variable": [{
+                        "description": "(Required) Level_harga_id :\n1 = Harga tingkat produsen \n3 = Harga tingkat eceran",
+                        "type": "any",
+                        "value": "<string>",
+                        "key": "level_harga_id"
+                    }]
+                },
+                "method": "GET",
+                "auth": {
+                    "type": "oauth2"
+                }
+            },
+            "response": [{
+                "id": "1e294882-cd57-4c65-b0bb-6ceb5feaa07c",
+                "name": "ok",
+                "originalRequest": {
+                    "url": {
+                        "path": ["api", "komoditas-by-levelharga", ":level_harga_id"],
+                        "host": ["{{baseUrl}}"],
+                        "query": [],
+                        "variable": [{
+                            "type": "any",
+                            "key": "level_harga_id"
+                        }]
+                    },
+                    "header": [{
+                        "description": {
+                            "content": "Added as a part of security scheme: oauth2",
+                            "type": "text/plain"
+                        },
+                        "key": "Authorization",
+                        "value": "<token>"
+                    }],
+                    "method": "GET",
+                    "body": {}
+                },
+                "status": "OK",
+                "code": 200,
+                "header": [{
+                    "key": "Content-Type",
+                    "value": "text/plain"
+                }],
+                "body": "",
+                "cookie": [],
+                "_postman_previewlanguage": "text"
+            }],
+            "event": []
+        }],
+        "event": []
+    }],
+    "event": [],
+    "variable": [{
+        "id": "baseUrl",
+        "type": "string",
+        "value": "https://api-splp.layanan.go.id/t/acehprov.go.id/panel_harga_komoditas_pangan/1"
+    }],
+    "auth": {
+        "type": "oauth2"
+    },
+    "info": {
+        "_postman_id": "1213c94a-8a19-4328-90cb-1d1ca071a883",
+        "name": "PanelHargaKomoditasPangan",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+        "description": {
+            "content": "",
+            "type": "text/plain"
+        }
+    }
+}
