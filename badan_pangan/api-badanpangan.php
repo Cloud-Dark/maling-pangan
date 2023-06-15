@@ -1,11 +1,14 @@
 <?php
 
+$env = parse_ini_file(".env");
+
+
 // Database connection settings
-$host = "localhost";
-$port = "5432";
-$dbname = "badanpangantabel"; 
-$user = "postgres";
-$password = "root";
+$host = $env["DB_HOST"];
+$port = $env["DB_PORT"];
+$dbname = $env["DB_NAME"]; 
+$user = $env["DB_USER"];
+$password = $env["DB_PASSWORD"];
 
 $connection = pg_connect("host=$host port=$port dbname=$dbname user=$user password=$password");
 if (!$connection) {
@@ -15,7 +18,7 @@ if (!$connection) {
 
     $json_produsen = "https://panelharga.badanpangan.go.id/api/hargaharianprovinsi/1/1";
 
-    $apiKey = '294543cfa1ae88aa6e2cb83213707d21b03892c7'; // Replace with your actual API key
+    $apiKey = $env["API_KEY"]; // Replace with your actual API key
 
     $ch = curl_init($json_produsen);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -141,7 +144,8 @@ if (!$connection) {
             foreach ($data['data'] as $item) {
                 $kodeProvinsi = 11;
                 $namaProvinsi = "Aceh";
-                $kodeKabupatenKota = $kabkota->kode_bps;
+                $kodeKabupatenKotaBps = $kabkota->kode_bps;
+                $kodeKabupatenKotaKemendagri=$kabkota->kode_kemendagri;
                 $namaKabupatenKota = $kabkota->nama;
                 $komoditas = $item['name'];
                 $tanggal = date("Y-m-d");
@@ -150,8 +154,8 @@ if (!$connection) {
     
                 if($geomeans != "-"){
     
-                    $queryProdusen = "INSERT INTO api_kabkota_produsen (kode_provinsi, nama_provinsi,kode_kabupaten_kota, nama_kabupaten_kota, tanggal, komoditas_pangan, harga_pangan) VALUES ($1, $2, $3, $4, $5, $6, $7) on conflict on constraint api_kabkota_produsen_unique do nothing";
-                    $resultProdusen = pg_query_params($connection, $queryProdusen,[$kodeProvinsi, $namaProvinsi, $kodeKabupatenKota, $namaKabupatenKota, $tanggal, $komoditas, $geomeans]);
+                    $queryProdusen = "INSERT INTO api_kabkota_produsen (kode_provinsi, nama_provinsi,kode_kabupaten_kota_bps,kode_kabupaten_kota_kemendagri, nama_kabupaten_kota, tanggal, komoditas_pangan, harga_pangan) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) on conflict on constraint api_kabkota_produsen_unique do nothing";
+                    $resultProdusen = pg_query_params($connection, $queryProdusen,[$kodeProvinsi, $namaProvinsi, $kodeKabupatenKotaBps, $kodeKabupatenKotaKemendagri, $namaKabupatenKota, $tanggal, $komoditas, $geomeans]);
                     if (!$resultProdusen) {
                         die('Error inserting data into the database');
                     }
@@ -193,13 +197,14 @@ if (!$connection) {
             foreach ($data['data'] as $item) {
                 $kodeProvinsi = 11;
                 $namaProvinsi = "Aceh";
-                $kodeKabupatenKota = $kabkota->kode_bps;
+                $kodeKabupatenKotaBps = $kabkota->kode_bps;
+                $kodeKabupatenKotaKemendagri=$kabkota->kode_kemendagri;
                 $namaKabupatenKota = $kabkota->nama;
                 $komoditas = $item['name'];
                 $geomeans = $item['geomean'];
                 if($geomeans != "-"){
-                    $queryEceran = "INSERT INTO api_kabkota_eceran (kode_provinsi, nama_provinsi,kode_kabupaten_kota,nama_kabupaten_kota, tanggal, komoditas_pangan, harga_pangan) VALUES ($1, $2, $3, $4, $5, $6, $7) on conflict on constraint api_kabkota_eceran_unique do nothing";
-                    $resultEceran = pg_query_params($connection, $queryEceran,[$kodeProvinsi, $namaProvinsi,$kodeKabupatenKota, $namaKabupatenKota, $tanggal, $komoditas, $geomeans]);
+                    $queryEceran = "INSERT INTO api_kabkota_eceran (kode_provinsi, nama_provinsi,kode_kabupaten_kota_bps,kode_kabupaten_kota_kemendagri, nama_kabupaten_kota, tanggal, komoditas_pangan, harga_pangan) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) on conflict on constraint api_kabkota_eceran_unique do nothing";
+                    $resultEceran = pg_query_params($connection, $queryEceran,[$kodeProvinsi, $namaProvinsi,$kodeKabupatenKotaBps, $kodeKabupatenKotaKemendagri, $namaKabupatenKota, $tanggal, $komoditas, $geomeans]);
                     if (!$resultEceran) {
                         die('Error inserting data into the database');
                     }

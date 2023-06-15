@@ -1,3 +1,4 @@
 *.json
 postmant collection
 *.xlsx
+.env

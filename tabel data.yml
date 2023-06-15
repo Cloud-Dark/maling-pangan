@@ -1,0 +1,98 @@
+tabel fe_provinsi_eceran
+id
+kode_provinsi int
+nama_provinsi varchar
+tanggal date
+komoditas_pangan varchar
+harga_pangan double
+
+tabel fe_provinsi_produsen
+id
+kode_provinsi int
+nama_provinsi varchar
+tanggal date
+komoditas_pangan varchar
+harga_pangan double
+
+table fe_kabkota_eceran
+id
+kode_provinsi int
+nama_provinsi varchar
+kode_kabupaten_kota int
+nama_kabupaten_kota varchar
+tanggal date
+komoditas_pangan varchar
+harga_pangan double
+
+tabel fe_kabkota_produsen
+id
+kode_provinsi int
+nama_provinsi varchar
+kode_kabupaten_kota int
+nama_kabupaten_kota varchar
+tanggal date
+komoditas_pangan varchar
+harga_pangan double
+
+
+tabel api_provinsi_eceran
+id
+kode_provinsi int
+nama_provinsi varchar
+tanggal date
+komoditas_pangan varchar
+harga_pangan double
+
+tabel api_provinsi_produsen
+id
+kode_provinsi int
+nama_provinsi varchar
+tanggal date
+komoditas_pangan varchar
+harga_pangan double
+
+table api_kabkota_eceran
+id
+kode_provinsi int
+nama_provinsi varchar
+kode_kabupaten_kota int
+nama_kabupaten_kota varchar
+tanggal date
+komoditas_pangan varchar
+harga_pangan double
+
+tabel api_kabkota_produsen
+id
+kode_provinsi int
+nama_provinsi varchar
+kode_kabupaten_kota int
+nama_kabupaten_kota varchar
+tanggal date
+komoditas_pangan varchar
+harga_pangan double
+
+
+create constraint unique (kode_kabupaten_kota, tanggal, komoditas_pangan, harga_pangan)  each table that has kode_kabupaten_kota
+
+and constraints unique (tanggal, komoditas_pangan, harga_pangan) each table that doesnt have kode_kabupaten_kota
+
+
+// name constraints tabel
+fe_provinsi_produsen_unique
+fe_provinsi_eceran_unique
+fe_kabkota_eceran_unique
+fe_kabkota_produsen_unique
+api_provinsi_eceran_unique
+api_provinsi_produsen_unique
+api_kabkota_eceran_unique
+api_kabkota_produsen_unique
+
+// name Table
+api_kabkota_eceran
+api_kabkota_produsen
+api_provinsi_eceran
+api_provinsi_produsen
+fe_kabkota_eceran
+fe_kabkota_produsen
+fe_provinsi_eceran
+fe_provinsi_produsen

@@ -1,9 +1,13 @@
 <?php
-$host = "localhost";
-$port = "5432";
-$dbname = "badanpangantabel";
-$user = "postgres";
-$password = "root";
+$env = parse_ini_file(".env");
+
+// Database connection settings
+$host = $env["DB_HOST"];
+$port = $env["DB_PORT"];
+$dbname = $env["DB_NAME"]; 
+$user = $env["DB_USER"];
+$password = $env["DB_PASSWORD"];
+
 
 $conn = pg_connect("host=$host port=$port dbname=$dbname user=$user password=$password");
 
@@ -46,12 +50,13 @@ $sql_fe_kabkota_eceran = "CREATE TABLE fe_kabkota_eceran (
     id SERIAL PRIMARY KEY,
     kode_provinsi INT,
     nama_provinsi VARCHAR(255),
-    kode_kabupaten_kota INT,
+    kode_kabupaten_kota_bps NUMERIC,
+    kode_kabupaten_kota_kemendagri NUMERIC,
     nama_kabupaten_kota VARCHAR(255),
     tanggal DATE,
     komoditas_pangan VARCHAR(255),
     harga_pangan DOUBLE PRECISION,
-    CONSTRAINT fe_kabkota_eceran_unique UNIQUE (kode_kabupaten_kota, tanggal, komoditas_pangan, harga_pangan)
+    CONSTRAINT fe_kabkota_eceran_unique UNIQUE (kode_kabupaten_kota_bps,kode_kabupaten_kota_kemendagri, tanggal, komoditas_pangan, harga_pangan)
 )";
 pg_query($conn, $sql_fe_kabkota_eceran);
 echo "Table fe_kabkota_eceran created successfully\n";
@@ -61,12 +66,13 @@ $sql_fe_kabkota_produsen = "CREATE TABLE fe_kabkota_produsen (
     id SERIAL PRIMARY KEY,
     kode_provinsi INT,
     nama_provinsi VARCHAR(255),
-    kode_kabupaten_kota INT,
+    kode_kabupaten_kota_bps NUMERIC,
+    kode_kabupaten_kota_kemendagri NUMERIC,
     nama_kabupaten_kota VARCHAR(255),
     tanggal DATE,
     komoditas_pangan VARCHAR(255),
     harga_pangan DOUBLE PRECISION,
-    CONSTRAINT fe_kabkota_produsen_unique UNIQUE (tanggal, komoditas_pangan, harga_pangan)
+    CONSTRAINT fe_kabkota_produsen_unique UNIQUE (kode_kabupaten_kota_bps,kode_kabupaten_kota_kemendagri,tanggal, komoditas_pangan, harga_pangan)
 )";
 pg_query($conn, $sql_fe_kabkota_produsen);
 echo "Table fe_kabkota_produsen created successfully\n";
@@ -102,12 +108,13 @@ $sql_api_kabkota_eceran = "CREATE TABLE api_kabkota_eceran (
     id SERIAL PRIMARY KEY,
     kode_provinsi INT,
     nama_provinsi VARCHAR(255),
-    kode_kabupaten_kota INT,
+    kode_kabupaten_kota_bps NUMERIC,
+    kode_kabupaten_kota_kemendagri NUMERIC,
     nama_kabupaten_kota VARCHAR(255),
     tanggal DATE,
     komoditas_pangan VARCHAR(255),
     harga_pangan DOUBLE PRECISION,
-    CONSTRAINT api_kabkota_eceran_unique UNIQUE (kode_kabupaten_kota, tanggal, komoditas_pangan, harga_pangan)
+    CONSTRAINT api_kabkota_eceran_unique UNIQUE (kode_kabupaten_kota_bps, kode_kabupaten_kota_kemendagri, tanggal, komoditas_pangan, harga_pangan)
 )";
 pg_query($conn, $sql_api_kabkota_eceran);
 echo "Table api_kabkota_eceran created successfully\n";
@@ -117,12 +124,13 @@ $sql_api_kabkota_produsen = "CREATE TABLE api_kabkota_produsen (
     id SERIAL PRIMARY KEY,
     kode_provinsi INT,
     nama_provinsi VARCHAR(255),
-    kode_kabupaten_kota INT,
+    kode_kabupaten_kota_bps NUMERIC,
+    kode_kabupaten_kota_kemendagri NUMERIC,
     nama_kabupaten_kota VARCHAR(255),
     tanggal DATE,
     komoditas_pangan VARCHAR(255),
     harga_pangan DOUBLE PRECISION,
-    CONSTRAINT api_kabkota_produsen_unique UNIQUE (tanggal, komoditas_pangan, harga_pangan)
+    CONSTRAINT api_kabkota_produsen_unique UNIQUE (kode_kabupaten_kota_bps, kode_kabupaten_kota_kemendagri,tanggal, komoditas_pangan, harga_pangan)
 )";
 pg_query($conn, $sql_api_kabkota_produsen);
 echo "Table api_kabkota_produsen created successfully\n";

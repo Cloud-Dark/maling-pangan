@@ -1,11 +1,13 @@
 <?php
 
+$env = parse_ini_file(".env");
+
 // Database connection settings
-$host = "localhost";
-$port = "5432";
-$dbname = "badanpangantabel";
-$user = "postgres";
-$password = "root";
+$host = $env["DB_HOST"];
+$port = $env["DB_PORT"];
+$dbname = $env["DB_NAME"]; 
+$user = $env["DB_USER"];
+$password = $env["DB_PASSWORD"];
 
 $listkabkotapath = file_get_contents('kode_daerah.json');
 $parseJson = json_decode($listkabkotapath);
@@ -39,7 +41,8 @@ foreach ($parseJson->data as $kabkota) {
     foreach ($data['data'] as $item) {
         $kodeProvinsi = 11;
         $namaProvinsi = "Aceh";
-        $kodeKabupatenKota = $kabkota->kode_bps;
+        $kodeKabupatenKotaBps = $kabkota->kode_bps;
+        $kodeKabupatenKotaKemendagri = $kabkota->kode_kemendagri;
         $namaKabupatenKota = $kabkota->nama;
         $komoditas = $item['name'];
         foreach ($item['by_date'] as $entry) {
@@ -47,11 +50,11 @@ foreach ($parseJson->data as $kabkota) {
             $geomeans = $entry['geomean'];
 
             if ($geomeans != "-") {
-                $queryProdusen = "INSERT INTO fe_kabkota_produsen (kode_provinsi, nama_provinsi, kode_kabupaten_kota, nama_kabupaten_kota, tanggal, komoditas_pangan, harga_pangan)
-                VALUES ($1, $2, $3, $4, $5, $6, $7)
+                $queryProdusen = "INSERT INTO fe_kabkota_produsen (kode_provinsi, nama_provinsi, kode_kabupaten_kota_bps, kode_kabupaten_kota_kemendagri , nama_kabupaten_kota, tanggal, komoditas_pangan, harga_pangan)
+                VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
                 ON CONFLICT ON CONSTRAINT fe_kabkota_produsen_unique DO NOTHING";
 
-                $resultProdusen = pg_query_params($connection, $queryProdusen, [$kodeProvinsi, $namaProvinsi, $kodeKabupatenKota, $namaKabupatenKota, $tanggal, $komoditas, $geomeans]);
+                $resultProdusen = pg_query_params($connection, $queryProdusen, [$kodeProvinsi, $namaProvinsi, $kodeKabupatenKotaBps, $kodeKabupatenKotaKemendagri, $namaKabupatenKota, $tanggal, $komoditas, $geomeans]);
                 if (!$resultProdusen) {
                     die('Error inserting data into the database');
                 }
@@ -81,7 +84,8 @@ foreach ($parseJson->data as $kabkota) {
     foreach ($data['data'] as $item) {
         $kodeProvinsi = 11;
         $namaProvinsi = "Aceh";
-        $kodeKabupatenKota = $kabkota->kode_bps;
+        $kodeKabupatenKotaBps = $kabkota->kode_bps;
+        $kodeKabupatenKotaKemendagri = $kabkota->kode_kemendagri;
         $namaKabupatenKota = $kabkota->nama;
         $komoditas = $item['name'];
         foreach ($item['by_date'] as $entry) {
@@ -89,11 +93,11 @@ foreach ($parseJson->data as $kabkota) {
             $geomeans = $entry['geomean'];
 
             if ($geomeans != "-") {
-                $queryEceran = "INSERT INTO fe_kabkota_eceran (kode_provinsi, nama_provinsi, kode_kabupaten_kota, nama_kabupaten_kota, tanggal, komoditas_pangan, harga_pangan)
-                VALUES ($1, $2, $3, $4, $5, $6, $7)
+                $queryEceran = "INSERT INTO fe_kabkota_eceran (kode_provinsi, nama_provinsi, kode_kabupaten_kota_bps, kode_kabupaten_kota_kemendagri, nama_kabupaten_kota, tanggal, komoditas_pangan, harga_pangan)
+                VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
                 ON CONFLICT ON CONSTRAINT fe_kabkota_eceran_unique DO NOTHING";
 
-                $resultEceran = pg_query_params($connection, $queryEceran, [$kodeProvinsi, $namaProvinsi, $kodeKabupatenKota, $namaKabupatenKota, $tanggal, $komoditas, $geomeans]);
+                $resultEceran = pg_query_params($connection, $queryEceran, [$kodeProvinsi, $namaProvinsi, $kodeKabupatenKotaBps, $kodeKabupatenKotaKemendagri, $namaKabupatenKota, $tanggal, $komoditas, $geomeans]);
                 if (!$resultEceran) {
                     die('Error inserting data into the database');
                 }
