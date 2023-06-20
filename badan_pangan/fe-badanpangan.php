@@ -22,7 +22,7 @@ $date_now = date("d-m-Y");
 $datea = $argv[1];
 $date_yesterday = date("d-m-Y", strtotime("-1 days"));
 
-// // produsen kabkota
+// produsen kabkota
 foreach ($parseJson->data as $kabkota) {
     $json_produsen = "https://panelharga.badanpangan.go.id/data/kabkota-range-by-levelharga/" . $kabkota->id . "/1/" . $datea . "/" . $date_now;
     $jsonDataFetch = file_get_contents($json_produsen);
@@ -64,7 +64,7 @@ foreach ($parseJson->data as $kabkota) {
     }
 }
 
-// // eceran kabkota
+// eceran kabkota
 foreach ($parseJson->data as $kabkota) {
     $json_eceran = "https://panelharga.badanpangan.go.id/data/kabkota-range-by-levelharga/" . $kabkota->id . "/3/" . $date_yesterday . "/" . $date_now;
 
@@ -147,8 +147,8 @@ if (isset($data['data']) && is_array($data['data'])) {
     echo "Invalid data format or missing 'data' key in JSON";
 }
 
-// // eceran
-$json_eceran_provinsi = "https://panelharga.badanpangan.go.id/data/provinsi-range-by-levelharga/1/1/". $datea . "/" .$date_now;
+// eceran
+$json_eceran_provinsi = "https://panelharga.badanpangan.go.id/data/provinsi-range-by-levelharga/1/3/". $datea . "/" .$date_now;
 $jsonDataFetch = file_get_contents($json_eceran_provinsi);
 
 if ($jsonDataFetch === false) {
